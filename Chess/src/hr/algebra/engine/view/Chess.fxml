@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="apMainBoard" prefHeight="452.0" prefWidth="977.0" styleClass="main_style" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.algebra.engine.controller.ChessController">
+   <children>
+      <Pane id="menuPane" layoutX="418.0" layoutY="38.0" prefHeight="400.0" prefWidth="241.0" stylesheets="@../style/style.css">
+         <children>
+            <Label id="statusLabel" fx:id="lblStatus" alignment="TOP_LEFT" layoutX="20.0" layoutY="14.0" prefHeight="101.0" prefWidth="207.0" stylesheets="@../style/style.css" text="New Game" textFill="#dbdbdb" wrapText="true">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cbWhitePromotionPiece" layoutX="20.0" layoutY="125.0" prefHeight="25.0" prefWidth="207.0" promptText="White promotion piece" />
+            <Button id="btn" fx:id="btnFlipBoard" layoutX="72.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#flipBoard" styleClass="main_style" text="Flip board">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <ComboBox fx:id="cbBlackPromotionPiece" layoutX="20.0" layoutY="248.0" prefHeight="25.0" prefWidth="207.0" promptText="Black promotion piece" />
+            <Button id="btn" fx:id="btnNewGame1" layoutX="56.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#startNewGame" text="Start new game">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button id="btn" fx:id="btnPreviousMove" disable="true" layoutX="8.0" layoutY="291.0" mnemonicParsing="false" onAction="#previousMove" onMouseClicked="#flipBoard" styleClass="main_style" text="Previous move">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button id="btn" fx:id="btnNextMove" disable="true" layoutX="135.0" layoutY="291.0" mnemonicParsing="false" onAction="#nextMove" onMouseClicked="#flipBoard" styleClass="main_style" text="Next move">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <TilePane id="boardTilePane" fx:id="boardTilePane" layoutX="14.0" layoutY="38.0" prefHeight="400.0" prefWidth="400.0" stylesheets="@../style/style.css" />
+      <MenuBar layoutY="2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="miShowDocumentation" mnemonicParsing="false" onAction="#showDocumentation" text="Save Documentation" />
+                  <MenuItem fx:id="miSaveGame" mnemonicParsing="false" onAction="#SaveGame" text="Save Game" />
+                  <MenuItem fx:id="miWatchReplay" mnemonicParsing="false" onAction="#watchReplay" text="Watch Replay" />
+                  <MenuItem fx:id="miPlayGme" mnemonicParsing="false" onAction="#PlayGame" text="Play Game" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Multiplayer">
+               <items>
+                  <MenuItem fx:id="miCreateNewMultiplayerGame" mnemonicParsing="false" onAction="#createNewMultiplayerGame" text="Create New Game" />
+                  <MenuItem fx:id="miDisconnectFromServeer" disable="true" mnemonicParsing="false" onAction="#DisconnectFromServer" text="Disconnect from server" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <TextField fx:id="tfMessage" layoutX="670.0" layoutY="413.0" onKeyPressed="#send" prefHeight="25.0" prefWidth="207.0" promptText="Insert message" />
+      <ScrollPane fx:id="spContainer" hbarPolicy="NEVER" layoutX="670.0" layoutY="38.0" prefHeight="364.0" prefWidth="294.0">
+         <content>
+            <VBox fx:id="vbMessages" prefHeight="362.0" prefWidth="292.0" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="btnSend" disable="true" layoutX="890.0" layoutY="413.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="25.0" prefWidth="73.0" text="Send" />
+      <Label fx:id="lblClock" layoutX="890.0" layoutY="14.0" text="Label" />
+      <TextField fx:id="tfGameKey" layoutX="134.0" layoutY="2.0" onKeyPressed="#send" prefHeight="25.0" prefWidth="207.0" promptText="Insert game key to join game" />
+      <Button fx:id="btnJoinGame" layoutX="341.0" layoutY="2.0" mnemonicParsing="false" onAction="#joinMultiplayerGame" prefHeight="25.0" prefWidth="73.0" text="Join game" />
+   </children>
+</AnchorPane>
